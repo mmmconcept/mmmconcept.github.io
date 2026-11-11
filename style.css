@@ -66,7 +66,53 @@ a { color: var(--mint); }
 }
 .nav.is-scrolled .nav-brand { opacity: 1; transform: none; }
 .nav-brand img { border-radius: 50%; }
+.nav-right { display: flex; align-items: center; gap: 8px; }
 .nav-links { display: flex; gap: 4px; }
+
+/* Language menu (native <details>, closed by script.js on outside click / Escape) */
+.lang-menu { position: relative; }
+.lang-menu summary {
+  list-style: none; cursor: pointer; user-select: none;
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--text); font-family: var(--head); font-weight: 700; font-size: .8rem; line-height: 1; letter-spacing: .06em;
+  padding: 7px 11px; border-radius: 999px; box-shadow: 0 0 0 1px rgba(255,255,255,.22) inset;
+  transition: background .2s, box-shadow .2s;
+}
+.lang-menu summary::-webkit-details-marker { display: none; }
+.lang-menu summary::after {
+  content: ""; width: 6px; height: 6px; margin-top: -3px;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg);
+  transition: transform .2s;
+}
+.lang-menu[open] summary::after { transform: rotate(225deg); margin-top: 3px; }
+.lang-menu summary:hover, .lang-menu summary:focus-visible, .lang-menu[open] summary {
+  background: rgba(255,255,255,.1); box-shadow: 0 0 0 1px var(--mint) inset;
+}
+.lang-menu ul {
+  position: absolute; right: 0; top: calc(100% + 10px); z-index: 5;
+  margin: 0; padding: 6px; list-style: none; min-width: 160px;
+  background: rgba(20, 29, 54, .96); border: 1px solid var(--line); border-radius: 14px;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.5);
+}
+.lang-menu li a {
+  display: block; padding: 8px 12px; border-radius: 9px;
+  color: var(--muted); text-decoration: none; font-weight: 600; font-size: .95rem;
+}
+.lang-menu li a:hover, .lang-menu li a:focus-visible { background: rgba(255,255,255,.08); color: var(--text); }
+.lang-menu li a[aria-current="true"] { color: var(--mint); }
+
+@media (max-width: 480px) {
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 6px 8px; font-size: .85rem; }
+}
+
+/* CJK: system fonts after Montserrat, no justified text */
+:lang(ja) { --head: "Montserrat", "Hiragino Sans", "Yu Gothic UI", "Meiryo", system-ui, sans-serif; }
+:lang(ko) { --head: "Montserrat", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif; }
+:lang(ja) .card p, :lang(ko) .card p { text-align: left; hyphens: manual; }
+:lang(ja) body, :lang(ja) p { line-break: strict; }
+:lang(ko) body, :lang(ko) p { word-break: keep-all; }
 .nav-links a {
   color: var(--muted); text-decoration: none; font-weight: 600; font-size: .95rem;
   padding: 6px 12px; border-radius: 999px; transition: color .2s, background .2s;

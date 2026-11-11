@@ -13,6 +13,7 @@
     initFilters();
     initCopy();
     initShowcase();
+    initLangMenu();
     if (!reduceMotion) {
       initSky();
       initTyped();
@@ -105,7 +106,7 @@
     document.querySelectorAll('[data-copy]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var text = btn.getAttribute('data-copy');
-        var done = function () { show('Address copied'); };
+        var done = function () { show(btn.getAttribute('data-done') || 'Copied'); };
         if (navigator.clipboard && window.isSecureContext) {
           navigator.clipboard.writeText(text).then(done, function () { show(text); });
         } else {
@@ -120,6 +121,18 @@
       clearTimeout(timer);
       timer = setTimeout(function () { toast.classList.remove('is-on'); }, 2200);
     }
+  }
+
+  // Close the language menu on outside click or Escape
+  function initLangMenu() {
+    var menu = document.querySelector('.lang-menu');
+    if (!menu) return;
+    document.addEventListener('click', function (e) {
+      if (menu.open && !menu.contains(e.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); }
+    });
   }
 
   // Watch in the hero cycles through product screens
