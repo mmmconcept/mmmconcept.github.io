@@ -7,7 +7,10 @@
   <meta name="description" content="MMM Concept은 Wear OS 스마트워치용 게임과 워치페이스를 만드는 작은 크리에이티브 스튜디오입니다.">
   <meta name="theme-color" content="#0C1426">
   <meta name="google-site-verification" content="wLY540dYTalxco0guLrAa_155NCUUVRVjrxutBVyrZk" />
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
   <link rel="canonical" href="https://mmmconcept.github.io/ko/">
   <link rel="alternate" hreflang="en" href="https://mmmconcept.github.io/">
   <link rel="alternate" hreflang="pl" href="https://mmmconcept.github.io/pl/">
@@ -31,9 +34,51 @@
   <meta property="og:locale:alternate" content="pt_BR">
   <meta property="og:locale:alternate" content="ja_JP">
   <meta property="og:site_name" content="MMM Concept">
-  <meta property="og:title" content="MMM Concept">
+  <meta property="og:title" content="MMM Concept: Wear OS용 게임과 워치페이스">
   <meta property="og:description" content="Wear OS용 게임과 워치페이스.">
-  <meta property="og:image" content="https://mmmconcept.github.io/images/emblem.png">
+  <meta property="og:image" content="https://mmmconcept.github.io/images/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Wear OS용 게임과 워치페이스.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "Organization",
+                       "@id":  "https://mmmconcept.github.io/#org",
+                       "name":  "MMM Concept",
+                       "url":  "https://mmmconcept.github.io/",
+                       "logo":  "https://mmmconcept.github.io/images/emblem.png",
+                       "sameAs":  [
+                                      "https://www.youtube.com/@MMMConcept",
+                                      "https://play.google.com/store/apps/dev?id=5864446319785155100"
+                                  ]
+                   },
+                   {
+                       "@type":  "WebSite",
+                       "@id":  "https://mmmconcept.github.io/#website",
+                       "url":  "https://mmmconcept.github.io/ko/",
+                       "name":  "MMM Concept",
+                       "description":  "MMM Concept은 Wear OS 스마트워치용 게임과 워치페이스를 만드는 작은 크리에이티브 스튜디오입니다.",
+                       "inLanguage":  "ko",
+                       "publisher":  {
+                                         "@id":  "https://mmmconcept.github.io/#org"
+                                     }
+                   },
+                   {
+                       "@type":  "MobileApplication",
+                       "name":  "MMM Abyss Deep Sea Explorer",
+                       "operatingSystem":  "Wear OS",
+                       "applicationCategory":  "UtilitiesApplication",
+                       "url":  "https://play.google.com/store/apps/details?id=com.mmmconcept.abyssexplorer",
+                       "publisher":  {
+                                         "@id":  "https://mmmconcept.github.io/#org"
+                                     }
+                   }
+               ]
+}</script>
   <link rel="stylesheet" href="../style.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="../script.js" defer></script>
@@ -114,14 +159,14 @@
         <button type="button" class="car-btn car-prev" aria-label="이전"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button type="button" class="car-btn car-next" aria-label="다음"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button type="button" class="car-pause" aria-label="일시정지" data-pause="일시정지" data-play="재생"><svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button>
-      <div class="grid" tabindex="0">
+      <div class="grid" role="group" aria-label="우리의 앱" tabindex="0">
 
         <article class="card" id="app-kittyzen" data-kind="game">
           <div class="card-media"><img src="../images/cards/kittyzen_card_720.webp" width="720" height="720" loading="lazy" alt="Wear OS 워치의 Kittyzen: Pet Arcade"><a class="card-video" href="https://www.youtube.com/shorts/k1Tr71uNJ2o" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>YouTube에서 보기</a></div>
           <h3>Kittyzen: Pet Arcade</h3>
           <p class="tag">Wear OS용 게임</p>
           <p>손목 위에서 픽셀 고양이를 돌보고, 짧은 아케이드 미니게임을 즐기며 코인을 모으세요. 고양이에게 옷을 입히고, 레벨을 올리고, 배지를 모을 수 있습니다. 광고도, 계정도 없습니다.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.kittyzenpetarcade">Google Play</a>
+          <span class="btn btn-soon" role="note" data-play-url="https://play.google.com/store/apps/details?id=com.mmmconcept.kittyzenpetarcade">출시 예정</span>
         </article>
 
         <article class="card" id="app-lunar" data-kind="face">
@@ -129,7 +174,7 @@
           <h3>MMM Lunar Flow Animated</h3>
           <p class="tag">Wear OS용 워치페이스</p>
           <p>진짜 달의 위상을 손목에서. 반짝이는 별과 은은하게 맥동하는 성운이 함께합니다. 달의 주기를 스스로 따라가며, 직접 설정할 수 있는 데이터 칸 3개와 상시 표시 모드를 제공합니다.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.lunarflowanimated">Google Play</a>
+          <span class="btn btn-soon" role="note" data-play-url="https://play.google.com/store/apps/details?id=com.mmmconcept.lunarflowanimated">출시 예정</span>
         </article>
 
         <article class="card" id="app-abyss" data-kind="face">
@@ -145,7 +190,7 @@
           <h3>MMM Emberling Dragon Pet</h3>
           <p class="tag">Wear OS용 워치페이스</p>
           <p>하루 걸음 수에 따라 자라나는 픽셀 불꽃 드래곤. 알에서 깨어나 뱀이 되고, 목표를 달성하면 날개 달린 드래곤이 됩니다. 직접 설정할 수 있는 링형 데이터 칸 4개와 상시 표시 모드를 제공합니다.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.emberlingdragonpet">Google Play</a>
+          <span class="btn btn-soon" role="note" data-play-url="https://play.google.com/store/apps/details?id=com.mmmconcept.emberlingdragonpet">출시 예정</span>
         </article>
 
         <article class="card" id="app-steppeak" data-kind="face">
@@ -153,7 +198,7 @@
           <h3>MMM Steppeak: Step Goal Hiker</h3>
           <p class="tag">Wear OS용 워치페이스</p>
           <p>하루 걸음 수 목표를 향해 걸으면 픽셀 등산객이 산을 오릅니다. 산기슭부터 정상의 깃발까지 6개의 장면, 금빛 진행 호, 목표 대비 걸음 수, 직접 설정할 수 있는 데이터 칸 2개. 걸음 수 데이터는 워치에만 남습니다.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.steppeakstepgoalhiker">Google Play</a>
+          <span class="btn btn-soon" role="note" data-play-url="https://play.google.com/store/apps/details?id=com.mmmconcept.steppeakstepgoalhiker">출시 예정</span>
         </article>
 
         <article class="card" id="app-pocket-td" data-kind="game">
@@ -161,7 +206,7 @@
           <h3>Pocket Tower Defense</h3>
           <p class="tag">Wear OS용 게임</p>
           <p>워치의 둥근 화면에서 즐기는 타워 디펜스: 길가에 탑을 세우고, 업그레이드하거나 팔면서 고블린, 오크, 늑대가 몰려오는 15개 웨이브를 막아내세요. 5번째 웨이브마다 보스가 등장합니다. 첫 번째 맵은 무료이며, 한 번의 구매로 추가 맵, Endless 모드, 일일 도전, 재능 트리까지 전체 게임이 열립니다. 광고 없음.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.pockettowerdefense">Google Play</a>
+          <span class="btn btn-soon" role="note" data-play-url="https://play.google.com/store/apps/details?id=com.mmmconcept.pockettowerdefense">출시 예정</span>
         </article>
 
       </div>

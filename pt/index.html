@@ -7,7 +7,10 @@
   <meta name="description" content="A MMM Concept é um pequeno estúdio criativo que faz jogos e mostradores de relógio para smartwatches com Wear OS.">
   <meta name="theme-color" content="#0C1426">
   <meta name="google-site-verification" content="wLY540dYTalxco0guLrAa_155NCUUVRVjrxutBVyrZk" />
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
   <link rel="canonical" href="https://mmmconcept.github.io/pt/">
   <link rel="alternate" hreflang="en" href="https://mmmconcept.github.io/">
   <link rel="alternate" hreflang="pl" href="https://mmmconcept.github.io/pl/">
@@ -31,9 +34,51 @@
   <meta property="og:locale:alternate" content="ja_JP">
   <meta property="og:locale:alternate" content="ko_KR">
   <meta property="og:site_name" content="MMM Concept">
-  <meta property="og:title" content="MMM Concept">
+  <meta property="og:title" content="MMM Concept: jogos e mostradores para Wear OS">
   <meta property="og:description" content="Jogos e mostradores para Wear OS.">
-  <meta property="og:image" content="https://mmmconcept.github.io/images/emblem.png">
+  <meta property="og:image" content="https://mmmconcept.github.io/images/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jogos e mostradores para Wear OS.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "Organization",
+                       "@id":  "https://mmmconcept.github.io/#org",
+                       "name":  "MMM Concept",
+                       "url":  "https://mmmconcept.github.io/",
+                       "logo":  "https://mmmconcept.github.io/images/emblem.png",
+                       "sameAs":  [
+                                      "https://www.youtube.com/@MMMConcept",
+                                      "https://play.google.com/store/apps/dev?id=5864446319785155100"
+                                  ]
+                   },
+                   {
+                       "@type":  "WebSite",
+                       "@id":  "https://mmmconcept.github.io/#website",
+                       "url":  "https://mmmconcept.github.io/pt/",
+                       "name":  "MMM Concept",
+                       "description":  "A MMM Concept é um pequeno estúdio criativo que faz jogos e mostradores de relógio para smartwatches com Wear OS.",
+                       "inLanguage":  "pt-BR",
+                       "publisher":  {
+                                         "@id":  "https://mmmconcept.github.io/#org"
+                                     }
+                   },
+                   {
+                       "@type":  "MobileApplication",
+                       "name":  "MMM Abyss Deep Sea Explorer",
+                       "operatingSystem":  "Wear OS",
+                       "applicationCategory":  "UtilitiesApplication",
+                       "url":  "https://play.google.com/store/apps/details?id=com.mmmconcept.abyssexplorer",
+                       "publisher":  {
+                                         "@id":  "https://mmmconcept.github.io/#org"
+                                     }
+                   }
+               ]
+}</script>
   <link rel="stylesheet" href="../style.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="../script.js" defer></script>
@@ -114,14 +159,14 @@
         <button type="button" class="car-btn car-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button type="button" class="car-btn car-next" aria-label="Seguinte"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button type="button" class="car-pause" aria-label="Pausar" data-pause="Pausar" data-play="Reproduzir"><svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button>
-      <div class="grid" tabindex="0">
+      <div class="grid" role="group" aria-label="Nossos apps" tabindex="0">
 
         <article class="card" id="app-kittyzen" data-kind="game">
           <div class="card-media"><img src="../images/cards/kittyzen_card_720.webp" width="720" height="720" loading="lazy" alt="Kittyzen: Pet Arcade em um relógio com Wear OS"><a class="card-video" href="https://www.youtube.com/shorts/k1Tr71uNJ2o" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>Assistir no YouTube</a></div>
           <h3>Kittyzen: Pet Arcade</h3>
           <p class="tag">Jogo para Wear OS</p>
           <p>Cuide de um gato pixelado direto no seu pulso e jogue minijogos de arcade rápidos para ganhar moedas. Vista seu gato, suba de nível e colecione emblemas. Sem anúncios, sem contas.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.kittyzenpetarcade">Google Play</a>
+          <span class="btn btn-soon" role="note" data-play-url="https://play.google.com/store/apps/details?id=com.mmmconcept.kittyzenpetarcade">Em breve</span>
         </article>
 
         <article class="card" id="app-lunar" data-kind="face">
@@ -129,7 +174,7 @@
           <h3>MMM Lunar Flow Animated</h3>
           <p class="tag">Mostrador para Wear OS</p>
           <p>A fase real da Lua no seu pulso, com estrelas cintilantes e uma nebulosa que pulsa suavemente. Ele acompanha o ciclo lunar sozinho, com três campos de dados personalizáveis e modo sempre ativo.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.lunarflowanimated">Google Play</a>
+          <span class="btn btn-soon" role="note" data-play-url="https://play.google.com/store/apps/details?id=com.mmmconcept.lunarflowanimated">Em breve</span>
         </article>
 
         <article class="card" id="app-abyss" data-kind="face">
@@ -145,7 +190,7 @@
           <h3>MMM Emberling Dragon Pet</h3>
           <p class="tag">Mostrador para Wear OS</p>
           <p>Um dragão de fogo pixelado que cresce com seus passos diários. Ele nasce de um ovo, vira uma serpente e, por fim, um dragão alado quando você atinge sua meta. Quatro campos personalizáveis em anéis e modo sempre ativo.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.emberlingdragonpet">Google Play</a>
+          <span class="btn btn-soon" role="note" data-play-url="https://play.google.com/store/apps/details?id=com.mmmconcept.emberlingdragonpet">Em breve</span>
         </article>
 
         <article class="card" id="app-steppeak" data-kind="face">
@@ -153,7 +198,7 @@
           <h3>MMM Steppeak: Step Goal Hiker</h3>
           <p class="tag">Mostrador para Wear OS</p>
           <p>Um trilheiro pixelado sobe uma montanha conforme você caminha rumo à sua meta diária de passos. Seis cenas, do pé da montanha até a bandeira no cume, um arco dourado de progresso, seus passos em relação à meta e dois campos personalizáveis. Seus passos ficam no seu relógio.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.steppeakstepgoalhiker">Google Play</a>
+          <span class="btn btn-soon" role="note" data-play-url="https://play.google.com/store/apps/details?id=com.mmmconcept.steppeakstepgoalhiker">Em breve</span>
         </article>
 
         <article class="card" id="app-pocket-td" data-kind="game">
@@ -161,7 +206,7 @@
           <h3>Pocket Tower Defense</h3>
           <p class="tag">Jogo para Wear OS</p>
           <p>Tower defense na tela redonda do seu relógio: construa torres ao lado do caminho, melhore ou venda e segure 15 ondas de goblins, orcs e lobos, com um chefe a cada cinco ondas. Grátis no primeiro mapa; uma compra única desbloqueia o jogo completo: mais mapas, modo Endless, desafio diário e árvore de talentos. Sem anúncios.</p>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.pockettowerdefense">Google Play</a>
+          <span class="btn btn-soon" role="note" data-play-url="https://play.google.com/store/apps/details?id=com.mmmconcept.pockettowerdefense">Em breve</span>
         </article>
 
       </div>

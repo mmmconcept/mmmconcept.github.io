@@ -23,8 +23,8 @@
   --bg-card-2: #19244a;
   --text: #EEF0FA;
   --muted: #a9b0cc;
-  --accent: #8B5CF6;
-  --accent-hover: #a07cf8;
+  --accent: #8250f2;
+  --accent-hover: #7445ec;
   --mint: #5eead4;
   --blue: #60a5fa;
   --line: rgba(255, 255, 255, 0.08);
@@ -273,7 +273,7 @@ a { color: var(--mint); }
   transition: background .2s, transform .2s, box-shadow .2s;
 }
 .btn:hover, .btn:focus-visible { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139, 92, 246, .35); }
-.btn-glow { background: linear-gradient(135deg, var(--accent), #6d6cf7); box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset, 0 10px 30px rgba(139, 92, 246, .4); }
+.btn-glow { background: linear-gradient(135deg, var(--accent), #6663f0); box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset, 0 10px 30px rgba(139, 92, 246, .4); }
 .btn-ghost { background: rgba(255,255,255,.06); box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset; }
 .btn-ghost:hover, .btn-ghost:focus-visible { background: rgba(255,255,255,.12); box-shadow: 0 0 0 1px rgba(94, 234, 212, .5) inset; }
 
@@ -558,3 +558,10 @@ footer p { margin: 4px 0; }
 
 .nav-links a { white-space: nowrap; }
 @media (max-width: 400px) { .nav-right { gap: 2px; } .nav-links a { padding: 6px 4px; font-size: .74rem; } .nav-brand img { width: 28px; height: 28px; } }
+
+/* "Coming soon" badge instead of the Google Play button (data/apps.json: published=false) */
+.btn.btn-soon {
+  background: rgba(255,255,255,.06); color: var(--muted); cursor: default;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.14) inset;
+}
+.btn.btn-soon:hover, .btn.btn-soon:focus-visible { background: rgba(255,255,255,.06); transform: none; box-shadow: 0 0 0 1px rgba(255,255,255,.14) inset; }
