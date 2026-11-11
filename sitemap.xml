@@ -117,10 +117,10 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://mmmconcept.github.io/ko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mmmconcept.github.io/"/>
   </url>
-  <url><loc>https://mmmconcept.github.io/legal/kittyzen-privacy.html</loc></url>
-  <url><loc>https://mmmconcept.github.io/legal/kittyzen-terms.html</loc></url>
-  <url><loc>https://mmmconcept.github.io/legal/pocket-tower-defense-privacy.html</loc></url>
-  <url><loc>https://mmmconcept.github.io/legal/pocket-tower-defense-terms.html</loc></url>
-  <url><loc>https://mmmconcept.github.io/legal/watch-faces-privacy.html</loc></url>
-  <url><loc>https://mmmconcept.github.io/legal/watch-faces-terms.html</loc></url>
+  <url><loc>https://mmmconcept.github.io/legal/kittyzen-privacy/</loc></url>
+  <url><loc>https://mmmconcept.github.io/legal/kittyzen-terms/</loc></url>
+  <url><loc>https://mmmconcept.github.io/legal/pocket-tower-defense-privacy/</loc></url>
+  <url><loc>https://mmmconcept.github.io/legal/pocket-tower-defense-terms/</loc></url>
+  <url><loc>https://mmmconcept.github.io/legal/watch-faces-privacy/</loc></url>
+  <url><loc>https://mmmconcept.github.io/legal/watch-faces-terms/</loc></url>
 </urlset>
