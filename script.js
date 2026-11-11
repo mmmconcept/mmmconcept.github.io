@@ -142,8 +142,8 @@
         var on = i === act && Math.abs(th) < step / 2;
         c.classList.toggle('is-active', on);
         c.setAttribute('aria-hidden', on ? 'false' : 'true');
-        var btn = c.querySelector('.btn');
-        if (btn) btn.tabIndex = on ? 0 : -1;
+        var btns = c.querySelectorAll('.btn, .card-video');
+        btns.forEach(function (b) { b.tabIndex = on ? 0 : -1; });
       });
       dots.forEach(function (d, k) { d.classList.toggle('is-on', k === act); d.setAttribute('aria-current', k === act ? 'true' : 'false'); });
     }
