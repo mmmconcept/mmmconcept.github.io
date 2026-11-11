@@ -502,3 +502,17 @@ footer p { margin: 4px 0; }
   .js .grid { --w: 70vw; perspective: 1100px; }
   .js .car-btn { display: none; }
 }
+
+    /* carousel without a visible frame: the ring sits directly on the page background */
+.js .carousel {
+  border: 0; background: none; box-shadow: none; border-radius: 0;
+  overflow-x: clip; overflow-y: visible;
+  padding-top: 24px;
+}
+@media (max-width: 699px) { .js .carousel { border-radius: 0; padding-top: 20px; } }
+.js .car-pause { top: 0; right: 16px; }
+
+/* bigger ring */
+.js .carousel { --cw: min(calc(100vw - 48px), 1440px); }
+.js .grid { --w: clamp(270px, 29vw, 410px); perspective: 1900px; }
+@media (max-width: 699px) { .js .grid { --w: 70vw; perspective: 1200px; } }
