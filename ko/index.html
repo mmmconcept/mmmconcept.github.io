@@ -42,7 +42,7 @@
   <div class="progress" aria-hidden="true"></div>
 
   <nav class="nav" aria-label="메인 메뉴">
-    <a class="nav-brand" href="#top"><img src="../images/emblem.png" width="32" height="32" alt=""><span>MMM Concept</span></a>
+    <a class="nav-brand" href="#top"><img src="../images/emblem.webp" width="32" height="32" alt=""><span>MMM Concept</span></a>
     <div class="nav-right">
       <div class="nav-links">
         <a href="#apps">앱</a>
@@ -70,7 +70,7 @@
     <canvas class="hero-sky" aria-hidden="true"></canvas>
     <div class="hero-inner">
       <div class="hero-text">
-        <img class="hero-emblem reveal" src="../images/emblem.png" width="84" height="84" alt="MMM Concept 로고: C 안에 있는 M 글자">
+        <img class="hero-emblem reveal" src="../images/emblem.webp" width="84" height="84" alt="MMM Concept 로고: C 안에 있는 M 글자">
         <h1 class="reveal">MMM <span class="shine">Concept</span></h1>
         <p class="lead reveal"><span class="typed" data-words="Wear OS|스마트워치|당신의 손목시계">Wear OS</span>를 위한 게임과 워치페이스</p>
         <p class="intro reveal">MMM Concept은 Wear OS 스마트워치용 게임과 워치페이스를 만드는 작은 크리에이티브 스튜디오입니다. 세심한 디테일, 안정적인 성능, 그리고 당신의 데이터는 당신의 것으로 남습니다.</p>
@@ -85,12 +85,12 @@
           <span class="watch-glow" aria-hidden="true"></span>
           <span class="watch-crown" aria-hidden="true"></span>
           <div class="watch-screen">
-            <img class="is-on" src="../images/cards/kittyzen_card_720.png" width="720" height="720" alt="Kittyzen: Pet Arcade" data-name="Kittyzen: Pet Arcade" data-target="app-kittyzen">
-            <img src="../images/cards/lunar_flow_card_720.png" width="720" height="720" alt="MMM Lunar Flow Animated" data-name="MMM Lunar Flow Animated" data-target="app-lunar" loading="lazy">
-            <img src="../images/cards/abyss_card_720.png" width="720" height="720" alt="MMM Abyss Deep Sea Explorer" data-name="MMM Abyss Deep Sea Explorer" data-target="app-abyss" loading="lazy">
-            <img src="../images/cards/emberling_card_720.png" width="720" height="720" alt="MMM Emberling Dragon Pet" data-name="MMM Emberling Dragon Pet" data-target="app-emberling" loading="lazy">
-            <img src="../images/cards/steppeak_card_720.png" width="720" height="720" alt="MMM Steppeak: Step Goal Hiker" data-name="MMM Steppeak: Step Goal Hiker" data-target="app-steppeak" loading="lazy">
-            <img src="../images/cards/pocket_td_card_720.png" width="720" height="720" alt="Pocket Tower Defense" data-name="Pocket Tower Defense" data-target="app-pocket-td" loading="lazy">
+            <img class="is-on" src="../images/cards/kittyzen_card_720.webp" width="720" height="720" alt="Kittyzen: Pet Arcade" data-name="Kittyzen: Pet Arcade" data-target="app-kittyzen">
+            <img src="../images/cards/lunar_flow_card_720.webp" width="720" height="720" alt="MMM Lunar Flow Animated" data-name="MMM Lunar Flow Animated" data-target="app-lunar" loading="lazy">
+            <img src="../images/cards/abyss_card_720.webp" width="720" height="720" alt="MMM Abyss Deep Sea Explorer" data-name="MMM Abyss Deep Sea Explorer" data-target="app-abyss" loading="lazy">
+            <img src="../images/cards/emberling_card_720.webp" width="720" height="720" alt="MMM Emberling Dragon Pet" data-name="MMM Emberling Dragon Pet" data-target="app-emberling" loading="lazy">
+            <img src="../images/cards/steppeak_card_720.webp" width="720" height="720" alt="MMM Steppeak: Step Goal Hiker" data-name="MMM Steppeak: Step Goal Hiker" data-target="app-steppeak" loading="lazy">
+            <img src="../images/cards/pocket_td_card_720.webp" width="720" height="720" alt="Pocket Tower Defense" data-name="Pocket Tower Defense" data-target="app-pocket-td" loading="lazy">
           </div>
         </div>
         <a class="showcase-label" href="#app-kittyzen"><span class="showcase-name">Kittyzen: Pet Arcade</span> <span aria-hidden="true">&rarr;</span></a>
@@ -109,56 +109,62 @@
         <button type="button" class="chip" data-filter="game" aria-pressed="false">게임</button>
         <button type="button" class="chip" data-filter="face" aria-pressed="false">워치페이스</button>
       </div>
-      <div class="grid">
+      <div class="carousel reveal">
+        <button type="button" class="car-btn car-prev" aria-label="이전"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" class="car-btn car-next" aria-label="다음"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" class="car-pause" aria-label="일시정지" data-pause="일시정지" data-play="재생"><svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button>
+      <div class="grid" tabindex="0">
 
-        <article class="card reveal" id="app-kittyzen" data-kind="game">
-          <div class="card-media"><img src="../images/cards/kittyzen_card_720.png" width="720" height="720" loading="lazy" alt="Wear OS 워치의 Kittyzen: Pet Arcade"></div>
+        <article class="card" id="app-kittyzen" data-kind="game">
+          <div class="card-media"><img src="../images/cards/kittyzen_card_720.webp" width="720" height="720" loading="lazy" alt="Wear OS 워치의 Kittyzen: Pet Arcade"></div>
           <h3>Kittyzen: Pet Arcade</h3>
           <p class="tag">Wear OS용 게임</p>
           <p>손목 위에서 픽셀 고양이를 돌보고, 짧은 아케이드 미니게임을 즐기며 코인을 모으세요. 고양이에게 옷을 입히고, 레벨을 올리고, 배지를 모을 수 있습니다. 광고도, 계정도 없습니다.</p>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.kittyzenpetarcade">Google Play</a>
         </article>
 
-        <article class="card reveal" id="app-lunar" data-kind="face">
-          <div class="card-media"><img src="../images/cards/lunar_flow_card_720.png" width="720" height="720" loading="lazy" alt="달을 보여 주는 MMM Lunar Flow Animated 워치페이스"></div>
+        <article class="card" id="app-lunar" data-kind="face">
+          <div class="card-media"><img src="../images/cards/lunar_flow_card_720.webp" width="720" height="720" loading="lazy" alt="달을 보여 주는 MMM Lunar Flow Animated 워치페이스"></div>
           <h3>MMM Lunar Flow Animated</h3>
           <p class="tag">Wear OS용 워치페이스</p>
           <p>진짜 달의 위상을 손목에서. 반짝이는 별과 은은하게 맥동하는 성운이 함께합니다. 달의 주기를 스스로 따라가며, 직접 설정할 수 있는 데이터 칸 3개와 상시 표시 모드를 제공합니다.</p>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.lunarflowanimated">Google Play</a>
         </article>
 
-        <article class="card reveal" id="app-abyss" data-kind="face">
-          <div class="card-media"><img src="../images/cards/abyss_card_720.png" width="720" height="720" loading="lazy" alt="다이버와 해파리가 있는 MMM Abyss Deep Sea Explorer 워치페이스"></div>
+        <article class="card" id="app-abyss" data-kind="face">
+          <div class="card-media"><img src="../images/cards/abyss_card_720.webp" width="720" height="720" loading="lazy" alt="다이버와 해파리가 있는 MMM Abyss Deep Sea Explorer 워치페이스"></div>
           <h3>MMM Abyss Deep Sea Explorer</h3>
           <p class="tag">Wear OS용 워치페이스</p>
           <p>다이버, 해파리, 네온 산호가 있는 빛나는 심해 풍경을 손목 위에서 만나보세요.</p>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.abyssexplorer">Google Play</a>
         </article>
 
-        <article class="card reveal" id="app-emberling" data-kind="face">
-          <div class="card-media"><img src="../images/cards/emberling_card_720.png" width="720" height="720" loading="lazy" alt="화산 위의 픽셀 불꽃 드래곤이 있는 MMM Emberling Dragon Pet 워치페이스"></div>
+        <article class="card" id="app-emberling" data-kind="face">
+          <div class="card-media"><img src="../images/cards/emberling_card_720.webp" width="720" height="720" loading="lazy" alt="화산 위의 픽셀 불꽃 드래곤이 있는 MMM Emberling Dragon Pet 워치페이스"></div>
           <h3>MMM Emberling Dragon Pet</h3>
           <p class="tag">Wear OS용 워치페이스</p>
           <p>하루 걸음 수에 따라 자라나는 픽셀 불꽃 드래곤. 알에서 깨어나 뱀이 되고, 목표를 달성하면 날개 달린 드래곤이 됩니다. 직접 설정할 수 있는 링형 데이터 칸 4개와 상시 표시 모드를 제공합니다.</p>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.emberlingdragonpet">Google Play</a>
         </article>
 
-        <article class="card reveal" id="app-steppeak" data-kind="face">
-          <div class="card-media"><img src="../images/cards/steppeak_card_720.png" width="720" height="720" loading="lazy" alt="눈 덮인 능선을 오르는 픽셀 등산객이 있는 MMM Steppeak: Step Goal Hiker 워치페이스"></div>
+        <article class="card" id="app-steppeak" data-kind="face">
+          <div class="card-media"><img src="../images/cards/steppeak_card_720.webp" width="720" height="720" loading="lazy" alt="눈 덮인 능선을 오르는 픽셀 등산객이 있는 MMM Steppeak: Step Goal Hiker 워치페이스"></div>
           <h3>MMM Steppeak: Step Goal Hiker</h3>
           <p class="tag">Wear OS용 워치페이스</p>
           <p>하루 걸음 수 목표를 향해 걸으면 픽셀 등산객이 산을 오릅니다. 산기슭부터 정상의 깃발까지 6개의 장면, 금빛 진행 호, 목표 대비 걸음 수, 직접 설정할 수 있는 데이터 칸 2개. 걸음 수 데이터는 워치에만 남습니다.</p>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.steppeakstepgoalhiker">Google Play</a>
         </article>
 
-        <article class="card reveal" id="app-pocket-td" data-kind="game">
-          <div class="card-media"><img src="../images/cards/pocket_td_card_720.png" width="720" height="720" loading="lazy" alt="길 위에 탑과 고블린이 있는 Pocket Tower Defense 게임 아이콘"></div>
+        <article class="card" id="app-pocket-td" data-kind="game">
+          <div class="card-media"><img src="../images/cards/pocket_td_card_720.webp" width="720" height="720" loading="lazy" alt="길 위에 탑과 고블린이 있는 Pocket Tower Defense 게임 아이콘"></div>
           <h3>Pocket Tower Defense</h3>
           <p class="tag">Wear OS용 게임</p>
           <p>워치의 둥근 화면에서 즐기는 타워 디펜스: 길가에 탑을 세우고, 업그레이드하거나 팔면서 고블린, 오크, 늑대가 몰려오는 15개 웨이브를 막아내세요. 5번째 웨이브마다 보스가 등장합니다. 첫 번째 맵은 무료이며, 한 번의 구매로 추가 맵, Endless 모드, 일일 도전, 재능 트리까지 전체 게임이 열립니다. 광고 없음.</p>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.mmmconcept.pockettowerdefense">Google Play</a>
         </article>
 
+      </div>
+        <div class="car-dots" role="group" aria-label="제품 선택"></div>
       </div>
     </section>
 

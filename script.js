@@ -6,11 +6,13 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var carousel = null; // set by initCarousel, used by the filter
 
   ready(function () {
     initNav();
     initReveal();
     initFilters();
+    initCarousel();
     initCopy();
     initShowcase();
     initLangMenu();
@@ -85,10 +87,12 @@
           c.classList.toggle('is-active', on);
           c.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
+        cards.forEach(function (card) { card.classList.toggle("is-hidden", !(f === "all" || card.getAttribute("data-kind") === f)); });
+        if (carousel) carousel.refresh();
         cards.forEach(function (card, i) {
           var show = f === 'all' || card.getAttribute('data-kind') === f;
-          card.classList.toggle('is-hidden', !show);
-          if (show && !reduceMotion && card.animate) {
+          // visibility already set above
+          if (show && !carousel && !reduceMotion && card.animate) {
             card.animate(
               [{ opacity: 0, transform: 'translateY(16px) scale(.97)' }, { opacity: 1, transform: 'none' }],
               { duration: 450, delay: i * 40, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }
@@ -97,6 +101,184 @@
         });
       });
     });
+  }
+
+  // Product carousel: 3D ring (cylinder). Drag with mouse/touch with inertia, snaps to the nearest card.
+  // Up to 5 cards are visible at once (the front one and two on each side), the rest turn away behind the ring.
+  function initCarousel() {
+    var root = document.querySelector('.carousel');
+    if (!root) return;
+    var track = root.querySelector('.grid');
+    var prev = root.querySelector('.car-prev');
+    var next = root.querySelector('.car-next');
+    var dotsBox = root.querySelector('.car-dots');
+    var pauseBtn = root.querySelector('.car-pause');
+
+    var cs = [], n = 0, wrap = true;
+    var cur = 0, target = 0;        // position in card units (0 = first card in front)
+    var step = 40, radius = 400, spacing = 260; // degrees between cards, ring radius, px per card step
+    var raf = 0, dragging = false, dots = [];
+
+    function visible() {
+      return Array.prototype.filter.call(track.children, function (c) { return !c.classList.contains('is-hidden'); });
+    }
+    function mod(a, m) { return ((a % m) + m) % m; }
+    function activeIndex() { return n ? (wrap ? mod(Math.round(cur), n) : Math.max(0, Math.min(n - 1, Math.round(cur)))) : 0; }
+    function clampTarget(t) { return wrap ? t : Math.max(0, Math.min(n - 1, t)); }
+    function shortest(d) { return wrap ? mod(d + n / 2, n) - n / 2 : d; }
+
+    function render() {
+      var act = activeIndex();
+      cs.forEach(function (c, i) {
+        var pos = i - cur;
+        if (wrap) { pos = mod(pos + n / 2, n) - n / 2; }       // shortest way round the ring, in (-n/2, n/2]
+        var th = pos * step;                                    // angle of this card on the ring
+        var cos = Math.cos(th * Math.PI / 180);
+        var show = Math.abs(th) < 100;
+        c.style.transform = 'translateX(-50%) translateZ(' + (-radius) + 'px) rotateY(' + th.toFixed(2) + 'deg) translateZ(' + radius + 'px)';
+        c.style.opacity = show ? Math.pow(Math.max(0, cos), 0.8).toFixed(3) : 0;
+        c.style.visibility = show ? 'visible' : 'hidden';
+        c.style.zIndex = String(Math.round(100 - Math.abs(th)));
+        var on = i === act && Math.abs(th) < step / 2;
+        c.classList.toggle('is-active', on);
+        c.setAttribute('aria-hidden', on ? 'false' : 'true');
+        var btn = c.querySelector('.btn');
+        if (btn) btn.tabIndex = on ? 0 : -1;
+      });
+      dots.forEach(function (d, k) { d.classList.toggle('is-on', k === act); d.setAttribute('aria-current', k === act ? 'true' : 'false'); });
+    }
+
+    function loop() {
+      raf = 0;
+      if (!dragging) {
+        var d = target - cur;
+        if (reduceMotion || Math.abs(d) < 0.002) { cur = target; } else { cur += d * 0.13; }
+      }
+      render();
+      if (dragging || cur !== target) raf = requestAnimationFrame(loop);
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+
+    function goTo(i) { target = clampTarget(Math.round(i)); kick(); }
+    function by(d) { goTo(Math.round(target) + d); }
+
+    function measure() {
+      cs = visible(); n = cs.length;
+      wrap = n >= 5;
+      step = window.innerWidth < 700 ? 46 : 40;
+      cs.forEach(function (c) { c.style.height = ''; });
+      var w = n ? cs[0].offsetWidth : 0, h = 0;
+      cs.forEach(function (c) { h = Math.max(h, c.offsetHeight); });
+      cs.forEach(function (c) { c.style.height = h + 'px'; });
+      track.style.height = (h + 34) + 'px';
+      radius = w / (2 * Math.sin(step / 2 * Math.PI / 180)) * 1.06;
+      spacing = Math.max(80, radius * Math.sin(step * Math.PI / 180));
+      prev.style.visibility = next.style.visibility = n > 1 ? '' : 'hidden';
+      dotsBox.innerHTML = '';
+      dots = [];
+      for (var k = 0; k < n; k++) {
+        (function (k) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('aria-label', cs[k].querySelector('h3').textContent);
+          b.addEventListener('click', function () { setPaused(true); goTo(Math.round(target) + shortest(k - activeIndex())); });
+          dotsBox.appendChild(b);
+          dots.push(b);
+        })(k);
+      }
+      dotsBox.style.display = n > 1 ? '' : 'none';
+      cur = target = clampTarget(target);
+      render();
+    }
+
+    // Drag with inertia (mouse and touch via pointer events)
+    var sx = 0, lastX = 0, lastT = 0, vel = 0, moved = false, pid = null;
+    track.addEventListener('pointerdown', function (e) {
+      if (e.button !== undefined && e.button !== 0) return;
+      sx = lastX = e.clientX; lastT = e.timeStamp; vel = 0; moved = false; pid = e.pointerId; dragging = true;
+      setPaused(true);
+    });
+    track.addEventListener('pointermove', function (e) {
+      if (!dragging || e.pointerId !== pid) return;
+      var dx = e.clientX - lastX;
+      if (!moved && Math.abs(e.clientX - sx) > 6) { moved = true; try { track.setPointerCapture(pid); } catch (err) { /* ignore */ } }
+      if (!moved) return;
+      var dt = Math.max(1, e.timeStamp - lastT);
+      vel = 0.8 * vel + 0.2 * (-dx / spacing / dt * 16);       // card units per frame
+      cur = clampTarget(cur - dx / spacing);
+      target = cur;
+      lastX = e.clientX; lastT = e.timeStamp;
+      kick();
+    });
+    function endDrag(e) {
+      if (!dragging || (e && e.pointerId !== pid)) return;
+      dragging = false;
+      if (moved) target = clampTarget(Math.round(cur + vel * 14)); else target = Math.round(target);
+      kick();
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    // a drag must not count as a click; a click on a side card brings it to the front
+    track.addEventListener('click', function (e) {
+      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; return; }
+      var card = e.target.closest ? e.target.closest('.card') : null;
+      var i = card ? cs.indexOf(card) : -1;
+      if (i >= 0 && !card.classList.contains('is-active')) { e.preventDefault(); goTo(Math.round(target) + shortest(i - activeIndex())); }
+    }, true);
+
+    prev.addEventListener('click', function () { setPaused(true); by(-1); });
+    next.addEventListener('click', function () { setPaused(true); by(1); });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); setPaused(true); by(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); setPaused(true); by(-1); }
+    });
+    var rt = 0;
+    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(measure, 120); });
+    window.addEventListener('load', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+
+    // Autoplay: turns the ring every few seconds; stops on any interaction or via the pause button
+    var userPaused = false, hovering = false, offscreen = true;
+    function setPaused(p) {
+      userPaused = p;
+      pauseBtn.classList.toggle('is-paused', p);
+      pauseBtn.setAttribute('aria-label', pauseBtn.getAttribute(p ? 'data-play' : 'data-pause'));
+    }
+    if (reduceMotion) {
+      pauseBtn.style.display = 'none';
+    } else {
+      pauseBtn.addEventListener('click', function () { setPaused(!userPaused); });
+      setInterval(function () {
+        if (userPaused || hovering || dragging || offscreen || document.hidden || n < 2) return;
+        if (!wrap && Math.round(target) >= n - 1) goTo(0); else by(1);
+      }, 4500);
+      root.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hovering = true; });
+      root.addEventListener('pointerleave', function () { hovering = false; });
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; }, { threshold: 0.4 }).observe(root);
+      } else { offscreen = false; }
+    }
+
+    carousel = {
+      // After a filter change: fade the ring in while it turns the new first card to the front (no jump)
+      refresh: function () {
+        track.style.transition = 'none';
+        track.style.opacity = '0';
+        target = 0;
+        measure();
+        cur = reduceMotion ? 0 : -1.6;
+        render();
+        void track.offsetWidth;
+        track.style.transition = 'opacity .45s ease';
+        track.style.opacity = '1';
+        kick();
+      },
+      show: function (card) {
+        var i = visible().indexOf(card);
+        if (i >= 0) goTo(Math.round(target) + shortest(i - activeIndex()));
+      }
+    };
+    measure();
   }
 
   // Copy e-mail address to clipboard
@@ -179,6 +361,7 @@
         var all = document.querySelector('.chip[data-filter="all"]');
         if (all) all.click();
       }
+      if (carousel) carousel.show(card);
       card.classList.remove('is-flash');
       void card.offsetWidth;
       card.classList.add('is-flash');
