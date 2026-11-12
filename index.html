@@ -79,6 +79,8 @@
                    }
                ]
 }</script>
+  <link rel="preload" href="fonts/montserrat-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/montserrat-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="script.js" defer></script>
@@ -87,7 +89,7 @@
   <div class="progress" aria-hidden="true"></div>
 
   <nav class="nav" aria-label="Main">
-    <a class="nav-brand" href="#top"><img src="images/emblem.webp" width="32" height="32" alt=""><span>MMM Concept</span></a>
+    <a class="nav-brand" href="#top" aria-label="MMM Concept"><img src="images/emblem.webp" width="32" height="32" alt=""><span>MMM Concept</span></a>
     <div class="nav-right">
       <div class="nav-links">
         <a href="#apps">Apps</a>
@@ -131,12 +133,12 @@
           <span class="watch-glow" aria-hidden="true"></span>
           <span class="watch-crown" aria-hidden="true"></span>
           <div class="watch-screen">
-            <img class="is-on" src="images/cards/kittyzen_card_720.webp" width="720" height="720" alt="Kittyzen: Pet Arcade" data-name="Kittyzen: Pet Arcade" data-target="app-kittyzen">
-            <img src="images/cards/lunar_flow_card_720.webp" width="720" height="720" alt="MMM Lunar Flow Animated" data-name="MMM Lunar Flow Animated" data-target="app-lunar" loading="lazy">
-            <img src="images/cards/abyss_card_720.webp" width="720" height="720" alt="MMM Abyss Deep Sea Explorer" data-name="MMM Abyss Deep Sea Explorer" data-target="app-abyss" loading="lazy">
-            <img src="images/cards/emberling_card_720.webp" width="720" height="720" alt="MMM Emberling Dragon Pet" data-name="MMM Emberling Dragon Pet" data-target="app-emberling" loading="lazy">
-            <img src="images/cards/steppeak_card_720.webp" width="720" height="720" alt="MMM Steppeak: Step Goal Hiker" data-name="MMM Steppeak: Step Goal Hiker" data-target="app-steppeak" loading="lazy">
-            <img src="images/cards/pocket_td_card_720.webp" width="720" height="720" alt="Pocket Tower Defense" data-name="Pocket Tower Defense" data-target="app-pocket-td" loading="lazy">
+            <img class="is-on" src="images/cards/kittyzen_card_720.webp" srcset="images/cards/kittyzen_card_480.webp 480w, images/cards/kittyzen_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" alt="Kittyzen: Pet Arcade" data-name="Kittyzen: Pet Arcade" data-target="app-kittyzen">
+            <img src="images/cards/lunar_flow_card_720.webp" srcset="images/cards/lunar_flow_card_480.webp 480w, images/cards/lunar_flow_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" alt="MMM Lunar Flow Animated" data-name="MMM Lunar Flow Animated" data-target="app-lunar" loading="lazy">
+            <img src="images/cards/abyss_card_720.webp" srcset="images/cards/abyss_card_480.webp 480w, images/cards/abyss_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" alt="MMM Abyss Deep Sea Explorer" data-name="MMM Abyss Deep Sea Explorer" data-target="app-abyss" loading="lazy">
+            <img src="images/cards/emberling_card_720.webp" srcset="images/cards/emberling_card_480.webp 480w, images/cards/emberling_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" alt="MMM Emberling Dragon Pet" data-name="MMM Emberling Dragon Pet" data-target="app-emberling" loading="lazy">
+            <img src="images/cards/steppeak_card_720.webp" srcset="images/cards/steppeak_card_480.webp 480w, images/cards/steppeak_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" alt="MMM Steppeak: Step Goal Hiker" data-name="MMM Steppeak: Step Goal Hiker" data-target="app-steppeak" loading="lazy">
+            <img src="images/cards/pocket_td_card_720.webp" srcset="images/cards/pocket_td_card_480.webp 480w, images/cards/pocket_td_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" alt="Pocket Tower Defense" data-name="Pocket Tower Defense" data-target="app-pocket-td" loading="lazy">
           </div>
         </div>
         <a class="showcase-label" href="#app-kittyzen"><span class="showcase-name">Kittyzen: Pet Arcade</span> <span aria-hidden="true">&rarr;</span></a>
@@ -162,7 +164,7 @@
       <div class="grid" role="group" aria-label="Our apps" tabindex="0">
 
         <article class="card" id="app-kittyzen" data-kind="game">
-          <div class="card-media"><img src="images/cards/kittyzen_card_720.webp" width="720" height="720" loading="lazy" alt="Kittyzen: Pet Arcade on a Wear OS watch"><a class="card-video" href="https://www.youtube.com/shorts/k1Tr71uNJ2o" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>Watch on YouTube</a></div>
+          <div class="card-media"><img src="images/cards/kittyzen_card_720.webp" srcset="images/cards/kittyzen_card_480.webp 480w, images/cards/kittyzen_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" loading="lazy" alt="Kittyzen: Pet Arcade on a Wear OS watch"><a class="card-video" href="https://www.youtube.com/shorts/k1Tr71uNJ2o" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>Watch on YouTube</a></div>
           <h3>Kittyzen: Pet Arcade</h3>
           <p class="tag">Game for Wear OS</p>
           <p>Care for a pixel cat right on your wrist and play quick arcade minigames to earn coins. Dress your cat up, level it up and collect badges. No ads, no accounts.</p>
@@ -170,7 +172,7 @@
         </article>
 
         <article class="card" id="app-lunar" data-kind="face">
-          <div class="card-media"><img src="images/cards/lunar_flow_card_720.webp" width="720" height="720" loading="lazy" alt="MMM Lunar Flow Animated watch face showing the Moon"><a class="card-video" href="https://www.youtube.com/shorts/enFLcf7ffIE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>Watch on YouTube</a></div>
+          <div class="card-media"><img src="images/cards/lunar_flow_card_720.webp" srcset="images/cards/lunar_flow_card_480.webp 480w, images/cards/lunar_flow_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" loading="lazy" alt="MMM Lunar Flow Animated watch face showing the Moon"><a class="card-video" href="https://www.youtube.com/shorts/enFLcf7ffIE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>Watch on YouTube</a></div>
           <h3>MMM Lunar Flow Animated</h3>
           <p class="tag">Watch face for Wear OS</p>
           <p>The real phase of the Moon on your wrist, with twinkling stars and a softly pulsing nebula. It follows the lunar cycle on its own, with three data slots you can customise and an always-on mode.</p>
@@ -178,7 +180,7 @@
         </article>
 
         <article class="card" id="app-abyss" data-kind="face">
-          <div class="card-media"><img src="images/cards/abyss_card_720.webp" width="720" height="720" loading="lazy" alt="MMM Abyss Deep Sea Explorer watch face with a diver and jellyfish"><a class="card-video" href="https://www.youtube.com/shorts/BFFXDkiiyzg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>Watch on YouTube</a></div>
+          <div class="card-media"><img src="images/cards/abyss_card_720.webp" srcset="images/cards/abyss_card_480.webp 480w, images/cards/abyss_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" loading="lazy" alt="MMM Abyss Deep Sea Explorer watch face with a diver and jellyfish"><a class="card-video" href="https://www.youtube.com/shorts/BFFXDkiiyzg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>Watch on YouTube</a></div>
           <h3>MMM Abyss Deep Sea Explorer</h3>
           <p class="tag">Watch face for Wear OS</p>
           <p>A glowing deep-sea scene with a diver, jellyfish and neon coral on your wrist.</p>
@@ -186,7 +188,7 @@
         </article>
 
         <article class="card" id="app-emberling" data-kind="face">
-          <div class="card-media"><img src="images/cards/emberling_card_720.webp" width="720" height="720" loading="lazy" alt="MMM Emberling Dragon Pet watch face with a pixel fire dragon on a volcano"><a class="card-video" href="https://www.youtube.com/shorts/o0rvsiPqWlg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>Watch on YouTube</a></div>
+          <div class="card-media"><img src="images/cards/emberling_card_720.webp" srcset="images/cards/emberling_card_480.webp 480w, images/cards/emberling_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" loading="lazy" alt="MMM Emberling Dragon Pet watch face with a pixel fire dragon on a volcano"><a class="card-video" href="https://www.youtube.com/shorts/o0rvsiPqWlg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>Watch on YouTube</a></div>
           <h3>MMM Emberling Dragon Pet</h3>
           <p class="tag">Watch face for Wear OS</p>
           <p>A pixel fire dragon that grows with your daily steps. It hatches as an egg, becomes a serpent and finally a winged dragon once you reach your goal. Four customisable ring slots and an always-on mode.</p>
@@ -194,7 +196,7 @@
         </article>
 
         <article class="card" id="app-steppeak" data-kind="face">
-          <div class="card-media"><img src="images/cards/steppeak_card_720.webp" width="720" height="720" loading="lazy" alt="MMM Steppeak: Step Goal Hiker watch face with a pixel hiker climbing a snowy ridge"></div>
+          <div class="card-media"><img src="images/cards/steppeak_card_720.webp" srcset="images/cards/steppeak_card_480.webp 480w, images/cards/steppeak_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" loading="lazy" alt="MMM Steppeak: Step Goal Hiker watch face with a pixel hiker climbing a snowy ridge"></div>
           <h3>MMM Steppeak: Step Goal Hiker</h3>
           <p class="tag">Watch face for Wear OS</p>
           <p>A pixel hiker climbs a mountain as you walk towards your daily step goal. Six scenes from the foot of the mountain to the summit flag, a gold progress arc, your steps against your goal and two customisable slots. Your steps stay on your watch.</p>
@@ -202,7 +204,7 @@
         </article>
 
         <article class="card" id="app-pocket-td" data-kind="game">
-          <div class="card-media"><img src="images/cards/pocket_td_card_720.webp" width="720" height="720" loading="lazy" alt="Pocket Tower Defense game icon with towers and goblins on a path"></div>
+          <div class="card-media"><img src="images/cards/pocket_td_card_720.webp" srcset="images/cards/pocket_td_card_480.webp 480w, images/cards/pocket_td_card_720.webp 720w" sizes="(max-width: 600px) 80vw, 480px" width="720" height="720" loading="lazy" alt="Pocket Tower Defense game icon with towers and goblins on a path"></div>
           <h3>Pocket Tower Defense</h3>
           <p class="tag">Game for Wear OS</p>
           <p>Tower defense on the round screen of your watch: build towers beside the path, upgrade or sell them, and hold off 15 waves of goblins, orcs and wolves, with a boss every fifth wave. Free to play on its first map; a one-time purchase unlocks the full game: more maps, Endless mode, the daily challenge and the talent tree. No ads.</p>
